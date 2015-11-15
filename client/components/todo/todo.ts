@@ -1,5 +1,5 @@
 import {Component, Validators, CORE_DIRECTIVES, ViewEncapsulation,
-FORM_DIRECTIVES, ControlGroup, Control} from 'angular2/angular2';
+FORM_DIRECTIVES, ControlGroup, Control, COMMON_PIPES} from 'angular2/angular2';
 import * as Rx from '@reactivex/rxjs/dist/cjs/Rx';
 
 import {TodoService} from './todo_service';
@@ -11,7 +11,7 @@ import {CustomOrderByPipe} from '../../pipes/CustomOrderByPipe';
   selector: 'todo',
   templateUrl: './components/todo/todo.html',
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, Autofocus],
-  pipes: [CustomOrderByPipe],
+  pipes: [COMMON_PIPES, CustomOrderByPipe],
   viewProviders: [TodoService]
 })
 export class TodoCmp {
