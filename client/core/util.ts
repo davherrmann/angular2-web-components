@@ -1,10 +1,18 @@
+const EMAIL_REG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+
+export function validateEmail(control: any) {    
+    return EMAIL_REG.test(control.value) ? null : {validEmail: true};
+}
+
+
 export class ObjectUtil {
 
-	static clone<T extends Object>(data: T): T {
+	static clone(data: any): any {
 		return JSON.parse(JSON.stringify(data));
 	}
 	
-	static merge<T extends Object>(dest: T, src: T): T {
+	static merge(dest: Object, src: Object) {
 		if (ObjectUtil.isBlank(src)) {
 			return dest;
 		}
@@ -14,7 +22,6 @@ export class ObjectUtil {
 		for (let prop in src) {
       dest[prop] = src[prop];
     }
-		return dest;
 	}
 		
 	static isPresent(data: any): boolean {
