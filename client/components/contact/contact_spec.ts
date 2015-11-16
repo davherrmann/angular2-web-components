@@ -1,12 +1,10 @@
-import {provide, Injector} from 'angular2/angular2';
+import {provide, Injector, Observable} from 'angular2/angular2';
 import {BaseRequestOptions, ConnectionBackend, Http, MockBackend, Response,
   ResponseOptions, RequestMethods
 } from 'angular2/http';
 import {TestComponentBuilder, describe, expect, inject, injectAsync, it,
   beforeEachProviders
 } from 'angular2/testing';
-
-import * as Rx from '@reactivex/rxjs/dist/cjs/Rx';
 
 import {ObjectUtil} from '../../core/util';
 import {Contact} from '../../core/dto';
@@ -74,103 +72,35 @@ export function main() {
 
   });
 
-  describe('ContactService', () => {
-
-    const contact = contacts[0];
-
-    let injector: Injector;
-    let backend: MockBackend;
-    let contactService: ContactService;
-
-    beforeEach(() => {
-      injector = Injector.resolveAndCreate([
-        BaseRequestOptions,
-        MockBackend,
-        provide(Http, {useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
-          return new Http(backend, defaultOptions);
-        }, deps: [MockBackend, BaseRequestOptions]}),
-        provide(ContactService, {useFactory: (http: Http) => {
-          return new ContactService(http);
-        }, deps: [Http]})
-      ]);
-      backend = injector.get(MockBackend);
-      contactService = injector.get(ContactService);
-    });
-
-    afterEach(() => backend.verifyNoPendingRequests());
-
-    it('perform find', (done: Function) => {
-      ensureCommunication(backend, RequestMethods.Get, contacts);
-      contactService.find().subscribe((resp: Contact[]) => {
-        expect(resp).toBe(contacts);
-        done();
-      });
-    });
-
-    it('perform findOneById', (done: Function) => {
-      ensureCommunication(backend, RequestMethods.Get, contact);
-      contactService.findOneById(contact._id).subscribe((resp: Contact) => {
-        expect(resp).toBe(contact);
-        done();
-      });
-    });
-
-    it('perform createOne', (done: Function) => {
-      ensureCommunication(backend, RequestMethods.Post, contact);
-      contactService.createOne(contact).subscribe((resp: Contact) => {
-        expect(resp).toBe(contact);
-        done();
-      });
-    });
-
-    it('perform updateOne', (done: Function) => {
-      ensureCommunication(backend, RequestMethods.Put, contact);
-      contactService.updateOne(contact).subscribe((resp: Contact) => {
-        expect(resp).toBe(contact);
-        done();
-      });
-    });
-
-    it('perform removeOneById', (done: Function) => {
-      ensureCommunication(backend, RequestMethods.Delete, contact);
-      contactService.removeOneById(contact._id).subscribe((resp: Contact) => {
-        expect(resp).toBe(contact);
-        done();
-      });
-    });
-
-  });
-
-
   class ContactServiceMock {
 
-    createOne(data: Contact): Rx.Observable<Contact> {
+    createOne(data: Contact): Observable<Contact> {
       const contact = buildContact(data);
       contacts.push(contact);
-      return Rx.Observable.from([contact]);
+      return Observable.from([contact]);
     }
 
-    updateOne(data: Contact): Rx.Observable<Contact> {
+    updateOne(data: Contact): Observable<Contact> {
       return this.findOneById(data._id).map((contact: Contact) => {
         ObjectUtil.merge(contact, data);
         return contact;
       });
     }
 
-    removeOneById(id: string): Rx.Observable<Contact> {
+    removeOneById(id: string): Observable<Contact> {
       const index = this._findIndex(id);
       const removed = contacts.splice(index, 1);
-      return Rx.Observable.from(removed);
+      return Observable.from(removed);
     }
 
-    find(): Rx.Observable<Contact[]> {
-      return Rx.Observable.from([contacts]);
+    find(): Observable<Contact[]> {
+      return Observable.from([contacts]);
     }
 
-    findOneById(id: string): Rx.Observable<Contact> {
+    findOneById(id: string): Observable<Contact> {
       const index = this._findIndex(id);
       const contact = contacts[index];
-      return Rx.Observable.from([contact]);
+      return Observable.from([contact]);
     }
 
     private _findIndex(id: string): number {
@@ -184,14 +114,6 @@ export function main() {
       return -1;
     }
 
-  }
-
-
-  function ensureCommunication (backend: MockBackend, reqMethod: RequestMethods, expectedBody: string | Object) {
-    backend.connections.subscribe((c: any) => {
-      expect(c.request.method).toBe(reqMethod);
-      c.mockRespond(new Response(new ResponseOptions({body: expectedBody})));
-    });
   }
 
 }

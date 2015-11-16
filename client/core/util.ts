@@ -1,12 +1,10 @@
-const EMAIL_REG = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
-
-export function validateEmail(control: any) {    
-    return EMAIL_REG.test(control.value) ? null : {validEmail: true};
-}
-
-
 export class ObjectUtil {
+	
+	static _seq = 0;
+
+	static nextId() {
+		return `${++ObjectUtil._seq}`;
+	}
 
 	static clone(data: any): any {
 		return JSON.parse(JSON.stringify(data));
