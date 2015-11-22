@@ -6,13 +6,16 @@ import {
 
 import {HomeCmp} from '../home/home';
 import {ContactCmp} from '../contact/contact';
+import {FrameCmp} from '../frame/frame';
+import {FormCmp} from '../form/form';
+import {ActionsCmp} from '../actions/actions';
 
 @Component({
   selector: 'app',
-  templateUrl: './components/app/app.html',
   styleUrls: ['./components/app/app.css'],
-  encapsulation: ViewEncapsulation.None,
-  directives: [ROUTER_DIRECTIVES]
+  templateUrl: './components/app/app.html',
+  encapsulation: ViewEncapsulation.Native,
+  directives: [ROUTER_DIRECTIVES, ContactCmp, FrameCmp, FormCmp, ActionsCmp]
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },

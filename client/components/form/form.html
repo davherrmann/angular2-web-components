@@ -1,0 +1,5 @@
+<h3>This is a form!</h3>
+<div *ng-for="#field of fields">
+  {{field.name}}
+  <input [type]="field.type" [name]="field.name">
+</div>

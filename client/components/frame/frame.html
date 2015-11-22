@@ -1,0 +1,17 @@
+<ng-content select="h2"></ng-content>
+<ng-content select="y-actions[toolbar]"></ng-content>
+<ng-content></ng-content>
+<bap>
+  <frame>
+    <title>Erste Seite mit Web Components</title>
+    <toolbar print delete access></toolbar>
+    <form columns="2">
+      <text validators="min(5), max(10)">Caption: Test</text>
+      <date>Datum: 25.10.1991</date>
+      <text>JBFOne</text>
+    </form>
+    <actions save cancel></actions>
+  </frame>
+  <messaging native></messaging>
+</bap>
+<ng-content select="y-actions"></ng-content>

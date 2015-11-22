@@ -1,5 +1,5 @@
 import {COMMON_DIRECTIVES, COMMON_PIPES, Component, Validators,
-  ControlGroup, Control, Observable} from 'angular2/angular2';
+  ControlGroup, Control, Observable, ViewEncapsulation} from 'angular2/angular2';
 
 import {validateEmail} from '../../core/web_util';
 import {Contact} from '../../core/dto';
@@ -10,6 +10,7 @@ import {CustomOrderByPipe} from '../../pipes/CustomOrderByPipe';
 @Component({
   selector: 'contact',
   templateUrl: './components/contact/contact.html',
+  encapsulation: ViewEncapsulation.Native,
   directives: [COMMON_DIRECTIVES, Autofocus],
   pipes: [COMMON_PIPES, CustomOrderByPipe],
   viewProviders: [ContactService]

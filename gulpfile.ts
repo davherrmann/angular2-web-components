@@ -92,6 +92,11 @@ gulp.task('tpl.build.watch', () =>
   )
 );
 
+gulp.task('css.build.dev', () =>
+  gulp.src(PATH.src.css)
+    .pipe(gulp.dest(PATH.dest.dev.component))
+);
+
 gulp.task('index.build.dev', () => {
 
   const INDEX_INJECTABLES = injectableAssetsRef();
@@ -120,7 +125,8 @@ gulp.task('build.dev', (done: gulp.TaskCallback) =>
       'js.client.build.dev',
       'tpl.build.dev',
       'csslib.build.dev',
-      'font.build.dev'
+      'font.build.dev',
+      'css.build.dev'
     ],
     'index.build.dev',
     done)
