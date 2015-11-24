@@ -9,13 +9,15 @@ import {ContactCmp} from '../contact/contact';
 import {FrameCmp} from '../frame/frame';
 import {FormCmp} from '../form/form';
 import {ActionsCmp} from '../actions/actions';
+import {JBFOne} from '../jbfone/jbfone';
 
 @Component({
   selector: 'app',
-  styleUrls: ['./components/app/app.css'],
+  styles: [':host {display: block;}'],
+  styleUrls: ['css/bootstrap.min.css'],
   templateUrl: './components/app/app.html',
   encapsulation: ViewEncapsulation.Native,
-  directives: [ROUTER_DIRECTIVES, ContactCmp, FrameCmp, FormCmp, ActionsCmp]
+  directives: [ROUTER_DIRECTIVES, ContactCmp, FrameCmp, FormCmp, ActionsCmp, JBFOne]
 })
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home' },

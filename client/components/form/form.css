@@ -1,0 +1,26 @@
+.form-group.required .control-label:after {
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:7px;
+    font-family: 'Glyphicons Halflings';
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.form-control {
+  min-width: 50px;
+  margin-bottom: 2px;
+}
+
+.control-label,
+.control-input {
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col-md-undef {
+  width: initial;
+}

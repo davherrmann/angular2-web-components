@@ -53,7 +53,7 @@ export const PATH = {
     ],
     csslib: [
       resolve('bootstrap/dist/css/bootstrap.min.css'),
-      resolve('bootstrap/dist/css/bootstrap.css.map')
+      resolve('bootstrap/dist/css/bootstrap.css.map'),
     ],
     font: [
       resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.eot'),
@@ -68,6 +68,7 @@ export const PATH = {
     ],
     css: [
       `${CLIENT_SRC_BASE}/components/**/*.css`,
+      `${CLIENT_SRC_BASE}/css/app.css`
     ],
     ts: [`${CLIENT_SRC_BASE}/**/*.ts`, `!${CLIENT_SRC_BASE}/**/*_spec.ts`]
   }

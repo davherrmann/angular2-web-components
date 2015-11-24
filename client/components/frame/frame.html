@@ -1,7 +1,21 @@
-<ng-content select="h2"></ng-content>
-<ng-content select="y-actions[toolbar]"></ng-content>
-<ng-content></ng-content>
-<bap>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 navbar-header">
+        <ng-content select="h2"></ng-content>
+      </div>
+      <div class="col-xs-8">
+        <div class="pull-right vertical-center">
+          <ng-content select="y-actions[toolbar]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container content">
+  <ng-content></ng-content>
+</div>
+<!--<bap>
   <frame>
     <title>Erste Seite mit Web Components</title>
     <toolbar print delete access></toolbar>
@@ -13,5 +27,11 @@
     <actions save cancel></actions>
   </frame>
   <messaging native></messaging>
-</bap>
-<ng-content select="y-actions"></ng-content>
+</bap>-->
+<div class="container">
+  <div class="col-sm-12">
+    <div class="pull-right">
+      <ng-content select="y-actions"></ng-content>
+    </div>
+  </div>
+</div>

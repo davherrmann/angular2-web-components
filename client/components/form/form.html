@@ -1,5 +1,11 @@
-<h3>This is a form!</h3>
-<div *ng-for="#field of fields">
-  {{field.name}}
-  <input [type]="field.type" [name]="field.name">
-</div>
+<h3>{{title}}</h3>
+<form class="form-horizontal">
+  <div class="form-group" *ng-for="#fieldGroup of parseFieldGroups(fields)">
+    <span [class.required]="field.required" *ng-for="#field of parseFields(fieldGroup)">
+      <label class="col-xs-12 col-sm-4 col-md-{{field.labelWidth}} control-label">{{field.name}}</label>
+      <div class="col-xs-12 col-sm-8 col-md-{{field.inputWidth}} control-input">
+        <input [type]="field.type" [name]="field.name" class="form-control" [required]="field.required">
+      </div>
+    </span>
+  </div>
+</form>

@@ -1,0 +1,30 @@
+:host([toolbar]) .btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  border: 2px solid transparent;
+  border-radius: 0;
+}
+
+:host([toolbar]) .btn:hover,
+:host([toolbar]) .btn:focus,
+:host([toolbar]) .btn:active:focus {
+  border-color: transparent;
+  border-bottom-color: white;
+  outline: none;
+}
+
+:host([toolbar]) .btn:active:focus {
+  border-top-color: white;
+}
+
+:host([toolbar]) .btn:active {
+  background-color: white;
+  color: black;
+  box-shadow: none;
+}
+
+:host([toolbar]) .btn-name {
+  display: none;
+}

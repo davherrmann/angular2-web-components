@@ -97,6 +97,12 @@ gulp.task('css.build.dev', () =>
     .pipe(gulp.dest(PATH.dest.dev.component))
 );
 
+gulp.task('css.build.watch', () =>
+  gulp.watch(PATH.src.css, (evt) =>
+    runSequence('css.build.dev', () => notifyLiveReload([evt.path]))
+  )
+);
+
 gulp.task('index.build.dev', () => {
 
   const INDEX_INJECTABLES = injectableAssetsRef();
@@ -160,6 +166,7 @@ gulp.task('serve.watch', [
   'js.client.watch',
   'index.build.watch',
   'tpl.build.watch',
+  'css.build.watch',
   'sass.build.dev'
 ]);
 

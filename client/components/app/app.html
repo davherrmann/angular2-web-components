@@ -1,6 +1,35 @@
-<y-frame>
-  <h2>JBFOne Test</h2>
-  <y-actions toolbar actions="print, delete, back, test"></y-actions>
-  <y-form fields="Geldbetrag:number, Telefonnummer:tel, Wählen Sie eine Farbe:color, JBFOne-Newsletter abonnieren:checkbox, Datum auswählen:date"></y-form>
-  <y-actions actions="cancel, save"></y-actions>
-</y-frame>
+<!--
+x keine default werte
+  validatoren
+x columns
+x styling
+? plz & ort in einer Zeile, bei responsive nicht trennen
+x Aktion Drucken von unten nach oben verschieben & zeigen, dass Style sich ändert
+x Aus den Komponenten eine eigene Komponente JBFOne machen!
+  footer komponente
+x styled loading screen
+-->
+
+<!--<y-frame>
+  <h2>JBFOne</h2>
+  <y-actions toolbar actions="Drucken:print, Zurück:back, Schließen:close"></y-actions>
+  <y-form
+    title="Personendaten erfassen"
+    fields="*Vorname:text,
+            *Nachname:text,
+            Geburtsdatum:date,
+            *E-Mail:mail,
+            Lieblingsfarbe:color">
+  </y-form>
+  <y-actions actions="Abbrechen:cancel, Speichern:save"></y-actions>
+</y-frame>-->
+<jbfone
+  title="Personendaten erfassen"
+  fields="*Vorname:text:2/2_
+          *Nachname:text:1/3,
+          Postleitzahl:number:/2_
+          Ort:text:1/3,
+          Geburtsdatum:date,
+          *E-Mail:email:/6,
+          Lieblingsfarbe:color:/?">
+</jbfone>

@@ -39,6 +39,7 @@
         "./client/components/frame/frame.ts",
         "./client/components/home/home_spec.ts",
         "./client/components/home/home.ts",
+        "./client/components/jbfone/jbfone.ts",
         "./client/core/dto.ts",
         "./client/core/util.ts",
         "./client/core/web_util.ts",

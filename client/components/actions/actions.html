@@ -1,1 +1,6 @@
-<button *ng-for="#action of actions">{{action}}</button>
+<div class="btn-toolbar">
+  <button class="btn btn-default" *ng-for="#action of parseActions(actions)">
+    <span class="glyphicon glyphicon-{{action.type}}" aria-hidden="true"></span>
+    <span class="btn-name">{{action.name}}</span>
+  </button>
+</div>
