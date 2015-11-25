@@ -4,8 +4,6 @@ import {
   ROUTER_DIRECTIVES
 } from 'angular2/router';
 
-import {HomeCmp} from '../home/home';
-import {ContactCmp} from '../contact/contact';
 import {FrameCmp} from '../frame/frame';
 import {FormCmp} from '../form/form';
 import {ActionsCmp} from '../actions/actions';
@@ -17,10 +15,6 @@ import {JBFOne} from '../jbfone/jbfone';
   styleUrls: ['css/bootstrap.min.css'],
   templateUrl: './components/app/app.html',
   encapsulation: ViewEncapsulation.Native,
-  directives: [ROUTER_DIRECTIVES, ContactCmp, FrameCmp, FormCmp, ActionsCmp, JBFOne]
+  directives: [ROUTER_DIRECTIVES, FrameCmp, FormCmp, ActionsCmp, JBFOne]
 })
-@RouteConfig([
-  { path: '/', component: HomeCmp, as: 'Home' },
-  { path: '/contact', component: ContactCmp, as: 'Contact' }
-])
 export class AppCmp {}
