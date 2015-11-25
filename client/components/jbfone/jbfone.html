@@ -1,9 +1,9 @@
 <y-frame>
   <h2>JBFOne</h2>
-  <y-actions toolbar actions="Drucken:print, Zurück:backward, Speichern:save, Schließen:remove"></y-actions>
+  <y-actions toolbar actions="Drucken:print, Zurück:backward, Schließen:remove"></y-actions>
   <y-form
     [title]="title"
     [fields]="fields">
   </y-form>
-  <y-actions actions="Abbrechen:cancel"></y-actions>
+  <y-actions actions="Abbrechen:cancel, *Speichern:save"></y-actions>
 </y-frame>

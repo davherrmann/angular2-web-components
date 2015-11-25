@@ -1,5 +1,5 @@
 <div class="btn-toolbar">
-  <button class="btn btn-default" *ng-for="#action of parseActions(actions)">
+  <button class="btn {{action.option}}" *ng-for="#action of parseActions(actions)" (click)="raiseAction(action.type)">
     <span class="glyphicon glyphicon-{{action.type}}" aria-hidden="true"></span>
     <span class="btn-name">{{action.name}}</span>
   </button>

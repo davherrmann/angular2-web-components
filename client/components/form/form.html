@@ -1,11 +1,33 @@
 <h3>{{title}}</h3>
-<form class="form-horizontal">
-  <div class="form-group" *ng-for="#fieldGroup of parseFieldGroups(fields)">
-    <span [class.required]="field.required" *ng-for="#field of parseFields(fieldGroup)">
+<form [ng-form-model]="formModel" class="form-horizontal" (submit)="onSubmit($event)">
+  <div class="form-group" *ng-for="#fieldGroup of parsedFieldGroups">
+    <span [class.required]="field.required" *ng-for="#field of fieldGroup">
       <label class="col-xs-12 col-sm-4 col-md-{{field.labelWidth}} control-label">{{field.name}}</label>
       <div class="col-xs-12 col-sm-8 col-md-{{field.inputWidth}} control-input">
-        <input [type]="field.type" [name]="field.name" class="form-control" [required]="field.required">
+        <input class="form-control"
+               [(ng-form-control)]="formModel.controls[field.name]"
+               [type]="field.type"
+               [name]="field.name"
+               [attr.required]="field.required ? true : null"
+               [attr.min]="field.min.length > 0 ? field.min : null"
+               [attr.max]="field.max.length > 0 ? field.max : null">
       </div>
     </span>
   </div>
+  <button type="submit" class="hidden" #submit-button>Submit</button>
 </form>
+<div #form-overlay class="form-overlay" [class.form-overlay-show]="showOverlay" (click)="hideOverlay()">
+  <div class="form-overlay-icon glyphicon glyphicon-ok" aria-hidden="true"></div>
+  <div class="form-overlay-values">
+    <table>
+      <tr *ng-for="#field of formValues()">
+        <td>
+          {{field.key}}:
+        </td>
+        <td>
+          {{field.value}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -28,3 +28,7 @@
 :host([toolbar]) .btn-name {
   display: none;
 }
+
+.btn-primary {
+  background-color: indigo;
+}

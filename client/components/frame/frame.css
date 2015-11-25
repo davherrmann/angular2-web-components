@@ -4,6 +4,7 @@
 
 .navbar {
   height: 70px;
+  background-color: indigo;
 }
 
 .navbar h2 {
