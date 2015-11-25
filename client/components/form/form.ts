@@ -28,6 +28,9 @@ export class FormCmp {
   }
 
   public set fields(value: string) {
+    if (value == null) {
+      return;
+    }
     this._fields = value;
     this.formModel = this.formBuilder.group({});
     this.parsedFieldGroups = this.parseFieldGroups(value);

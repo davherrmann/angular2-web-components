@@ -1,39 +1,19 @@
 <!--
-x keine default werte
-x validatoren: required, min, max
-x columns
-x styling
-? plz & ort in einer Zeile, bei responsive nicht trennen
-x Aktion Drucken von unten nach oben verschieben & zeigen, dass Style sich ändert
-x Aus den Komponenten eine eigene Komponente JBFOne machen!
-  footer komponente
-x styled loading screen
-x events
-x submit form from external button
-  notifications
+
+  Geschichte erzählen
+  Rahmen erstellen
+  Titel erstellen
+  Formular einfügen (AN ALLE: BITTE MITHELFEN :) - Felder, Pflichtfelder, Typen, Breiten, Validierung
+  Yeah, I'm responsive!
+  Aktionen einfügen
+   - Toolbar
+   - Actionbar
+  Schick ab die Form!
+  Ein UXler merkt an: "Dieser Button gehört woanders hin!"
+  DO IT YOURSELF: Die JBFOne WebComponent!
+
+x Komponenten: y-frame (h2, y-actions, y-form)
+  y-actions (toolbar?, actions="Name:id") (id: print, backward, remove, cance, save)
+  y-form (title, fields="*Name:type:x/y:valid/ators_") (type: text, number, date, email, color)
+
 -->
-
-<!--<y-frame>
-  <h2>JBFOne</h2>
-  <y-actions toolbar actions="Drucken:print, Zurück:back, Schließen:close"></y-actions>
-  <y-form
-    title="Personendaten erfassen"
-    fields="*Vorname:text,
-            *Nachname:text,
-            Geburtsdatum:date,
-            *E-Mail:mail,
-            Lieblingsfarbe:color">
-  </y-form>
-  <y-actions actions="Abbrechen:cancel, Speichern:save"></y-actions>
-</y-frame>-->
-
-<jbfone
-  title="Personendaten erfassen"
-  fields="*Vorname:text:2/2_
-          *Nachname:text:1/3,
-          Postleitzahl:number:/2:min(0)/max(99999)_
-          Ort:text:1/3,
-          Geburtsdatum:date,
-          *E-Mail:email:/6,
-          Lieblingsfarbe:color:/?">
-</jbfone>

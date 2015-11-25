@@ -18,6 +18,7 @@ export class ActionsCmp {
   }
 
   public raiseAction(action: string) {
+    console.log('action: ' + action);
     this.test.next(action);
   }
 
