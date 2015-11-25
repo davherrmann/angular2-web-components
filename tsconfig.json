@@ -31,6 +31,7 @@
         "./client/components/actions/actions.ts",
         "./client/components/app/app_spec.ts",
         "./client/components/app/app.ts",
+        "./client/components/components.ts",
         "./client/components/contact/contact_mock.ts",
         "./client/components/contact/contact_service.ts",
         "./client/components/contact/contact_spec.ts",
